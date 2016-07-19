@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% if is_visible %}
+  is_visibleがtrueなの表示します。<br>
+  {%else%}
+  is_visibleがFalseなので表示します。<br>
+  {%endif%}
+
+  {% if empty_str|length > 0 %}
+  empty_strの文字列は{{empty_str|length}}です。
+  {% else %}
+  empty_strが空です。<br>
+  {% endif %}
+{% endblock %}
