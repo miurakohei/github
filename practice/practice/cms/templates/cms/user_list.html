@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}顧客の一覧{% endblock title %}
+
+{% block extrahead %}
+<style>
+    table{
+        margin-top: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">顧客の一覧</h3>
+    <a href="{% url 'cms:user_add' %}" class="btn btn-default btn-sm">追加</a>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>顧客ID</th>
+                <th>氏名</th>
+                <th>〒</th>
+                <th>住所</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td><a href="{% url 'cms:user_mod' user_id=user.id %}"class="btn btn-default btn-sm">{{ user.id }}</a></td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.post }}</td>
+                <td>{{ user.address }}</td>
+                <td><a href="{% url 'cms:user_del' user_id=user.id%}"class="btn btn-default btn-sm">削除</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
